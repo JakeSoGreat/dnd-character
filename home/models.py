@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Race model
 class Race(models.Model):
     name = models.CharField(max_length=100)
@@ -8,6 +9,7 @@ class Race(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # Background model
 class Background(models.Model):
@@ -18,12 +20,14 @@ class Background(models.Model):
     def __str__(self):
         return self.name
 
+
 # Alignment model
 class Alignment(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 # Character model
 class Character(models.Model):
@@ -38,4 +42,3 @@ class Character(models.Model):
 
     def __str__(self):
         return self.name
-    

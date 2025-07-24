@@ -3,15 +3,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from .forms import CharacterForm
 from .models import Character
 
+
 # Create your views here.
-def home_page_view(request):  
-    return HttpResponse("Hello, World!")
+def home_page_view(request):
+    return render(request, 'home.html')
+
 
 def custom_login(request):
     if request.method == 'POST':
@@ -24,6 +25,7 @@ def custom_login(request):
         else:
             messages.error(request, 'Invalid username or password.')
     return render(request, 'login.html')
+
 
 def register(request):
     if request.method == 'POST':
@@ -40,10 +42,12 @@ def register(request):
             return redirect('home')
     return render(request, 'register.html')
 
+
 @login_required
 def character_list(request):
     characters = Character.objects.filter(user=request.user)
     return render(request, 'character_list.html', {'characters': characters})
+
 
 @login_required
 def character_create(request):
@@ -58,6 +62,7 @@ def character_create(request):
         form = CharacterForm()
     return render(request, 'character_form.html', {'form': form})
 
+
 @login_required
 def character_update(request, pk):
     character = get_object_or_404(Character, pk=pk, user=request.user)
@@ -69,6 +74,7 @@ def character_update(request, pk):
     else:
         form = CharacterForm(instance=character)
     return render(request, 'character_form.html', {'form': form})
+
 
 @login_required
 def character_delete(request, pk):

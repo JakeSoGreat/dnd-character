@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}DnD Character Sheet - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div
+    class="hero-section text-center py-5 mb-5"
+    style="
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+    "
+>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">
+                    Create Epic D&D Characters
+                </h1>
+                <p class="lead mb-4">
+                    Build, manage, and track your Dungeons & Dragons characters
+                    with our easy-to-use character sheet manager.
+                </p>
+
+                {% if user.is_authenticated %}
+                <a
+                    href="{% url 'character_list' %}"
+                    class="btn btn-light btn-lg me-3"
+                >
+                    <i class="fas fa-scroll"></i> My Characters
+                </a>
+                <a
+                    href="{% url 'character_create' %}"
+                    class="btn btn-outline-light btn-lg"
+                >
+                    <i class="fas fa-plus"></i> Create New Character
+                </a>
+                {% else %}
+                <a
+                    href="{% url 'register' %}"
+                    class="btn btn-light btn-lg me-3"
+                >
+                    <i class="fas fa-user-plus"></i> Get Started
+                </a>
+                <a
+                    href="{% url 'custom_login' %}"
+                    class="btn btn-outline-light btn-lg"
+                >
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="row text-center">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="mb-3">
+                    <i class="fas fa-dice-d20 fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title">Character Creation</h5>
+                <p class="card-text">
+                    Build detailed D&D characters with races, classes,
+                    backgrounds, and alignments.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="mb-3">
+                    <i class="fas fa-chart-line fa-3x text-success"></i>
+                </div>
+                <h5 class="card-title">Level Tracking</h5>
+                <p class="card-text">
+                    Track your character's progression and level advancement
+                    throughout your campaigns.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="mb-3">
+                    <i class="fas fa-users fa-3x text-info"></i>
+                </div>
+                <h5 class="card-title">Easy Management</h5>
+                <p class="card-text">
+                    Organize and manage multiple characters in one convenient
+                    location.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block extra_head %}
+<!-- Font Awesome for icons -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+{% endblock %}

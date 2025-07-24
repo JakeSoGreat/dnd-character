@@ -1,15 +1,9 @@
-{% extends "base.html" %}
-{% block content %}
-    <head>
-        <title>Delete Character</title>
-    </head>
-    <body>
-        <h2>Delete Character</h2>
-        <p>Are you sure you want to delete "{{ character.name }}"?</p>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit">Yes, delete</button>
-            <a href="{% url 'character_list' %}">Cancel</a>
-        </form>
-    </body>
+{% extends "base.html" %} {% block content %}
+<h2>Delete Character</h2>
+<p>Are you sure you want to delete "{{ character.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'character_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
 {% endblock %}
