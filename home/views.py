@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -41,6 +41,12 @@ def register(request):
             login(request, user)
             return redirect('home')
     return render(request, 'register.html')
+
+
+def custom_logout(request):
+    logout(request)
+    messages.success(request, 'You have been logged out successfully.')
+    return redirect('home')
 
 
 @login_required
