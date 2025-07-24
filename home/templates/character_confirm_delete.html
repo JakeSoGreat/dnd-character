@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block content %}
     <head>
         <title>Delete Character</title>
     </head>
@@ -12,4 +12,4 @@
             <a href="{% url 'character_list' %}">Cancel</a>
         </form>
     </body>
-</html>
+{% endblock %}

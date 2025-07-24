@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %} {% block content %}
     <head>
         <title>Character Form</title>
     </head>
@@ -11,4 +10,4 @@
         </form>
         <a href="{% url 'character_list' %}">Back to list</a>
     </body>
-</html>
+{% endblock %}
