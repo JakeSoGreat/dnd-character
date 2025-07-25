@@ -31,7 +31,7 @@ class Alignment(models.Model):
 
 
 # Class model (D&D character classes)
-class CharacterClass(models.Model):
+class Class(models.Model):
     name = models.CharField(max_length=100)
     features = models.TextField()
 
@@ -74,7 +74,6 @@ class Feat(models.Model):
 class Character(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    # image = models.ImageField(upload_to='character_images/', blank=True, null=True)
     description = models.TextField(blank=True)
     level = models.PositiveIntegerField(
         default=1,
@@ -88,8 +87,15 @@ class Character(models.Model):
         Alignment, on_delete=models.SET_NULL, null=True
     )
     
+    strength = models.PositiveIntegerField(default=10)
+    dexterity = models.PositiveIntegerField(default=10)
+    constitution = models.PositiveIntegerField(default=10)
+    intelligence = models.PositiveIntegerField(default=10)
+    wisdom = models.PositiveIntegerField(default=10)
+    charisma = models.PositiveIntegerField(default=10)
+    
     # Many-to-many relationships
-    character_classes = models.ManyToManyField(CharacterClass, blank=True)
+    character_classes = models.ManyToManyField(Class, blank=True)
     spells = models.ManyToManyField(Spell, blank=True)
     items = models.ManyToManyField(Item, blank=True)
     feats = models.ManyToManyField(Feat, blank=True)
@@ -98,17 +104,3 @@ class Character(models.Model):
         return self.name
 
 
-# AbilityScore model (the six D&D ability scores)
-class AbilityScore(models.Model):
-    character = models.OneToOneField(
-        Character, on_delete=models.CASCADE, related_name='ability_scores'
-    )
-    strength = models.PositiveIntegerField(default=10)
-    dexterity = models.PositiveIntegerField(default=10)
-    constitution = models.PositiveIntegerField(default=10)
-    intelligence = models.PositiveIntegerField(default=10)
-    wisdom = models.PositiveIntegerField(default=10)
-    charisma = models.PositiveIntegerField(default=10)
-
-    def __str__(self):
-        return f"{self.character.name}'s Ability Scores"
