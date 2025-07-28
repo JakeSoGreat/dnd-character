@@ -1,11 +1,10 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .forms import CharacterForm
+from .forms import CharacterForm, QuickSpellForm, QuickItemForm
 from .models import Character
 
 
@@ -58,28 +57,65 @@ def character_list(request):
 @login_required
 def character_create(request):
     if request.method == 'POST':
-        form = CharacterForm(request.POST)
-        if form.is_valid():
-            character = form.save(commit=False)
+        character_form = CharacterForm(request.POST)
+        
+        # Handle quick-add forms
+        if 'add_spell' in request.POST:
+            spell_form = QuickSpellForm(request.POST)
+            if spell_form.is_valid():
+                spell_form.save()
+                messages.success(request, 'Spell added successfully!')
+                return redirect('character_create')
+        
+        elif 'add_item' in request.POST:
+            item_form = QuickItemForm(request.POST)
+            if item_form.is_valid():
+                item_form.save()
+                messages.success(request, 'Item added successfully!')
+                return redirect('character_create')
+        
+        # Handle main character form
+        elif character_form.is_valid():
+            character = character_form.save(commit=False)
             character.user = request.user
             character.save()
+            character_form.save_m2m()
             return redirect('character_list')
+    
     else:
-        form = CharacterForm()
-    return render(request, 'character_form.html', {'form': form})
+        character_form = CharacterForm()
+    
+    # Initialize quick-add forms
+    spell_form = QuickSpellForm()
+    item_form = QuickItemForm()
+    
+    return render(request, 'character_form.html', {
+        'character_form': character_form,
+        'spell_form': spell_form,
+        'item_form': item_form
+    })
 
 
 @login_required
 def character_update(request, pk):
     character = get_object_or_404(Character, pk=pk, user=request.user)
     if request.method == 'POST':
-        form = CharacterForm(request.POST, instance=character)
-        if form.is_valid():
-            form.save()
+        character_form = CharacterForm(request.POST, instance=character)
+        if character_form.is_valid():
+            character_form.save()
             return redirect('character_list')
     else:
-        form = CharacterForm(instance=character)
-    return render(request, 'character_form.html', {'form': form})
+        character_form = CharacterForm(instance=character)
+    
+    # Initialize quick-add forms for consistency
+    spell_form = QuickSpellForm()
+    item_form = QuickItemForm()
+    
+    return render(request, 'character_form.html', {
+        'character_form': character_form,
+        'spell_form': spell_form,
+        'item_form': item_form
+    })
 
 
 @login_required

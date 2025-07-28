@@ -54,7 +54,7 @@ class Spell(models.Model):
 # Items model
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    item_type = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
