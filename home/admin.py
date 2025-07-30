@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    Race, Background, Alignment, Character, 
+    Race, Background, Alignment, Character,
     Class, Spell, Item, Feat
 )
 

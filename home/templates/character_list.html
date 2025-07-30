@@ -9,6 +9,7 @@
             {% for character in characters %}
             <li>
                 {{ character.name }} (Level {{ character.level }})
+                <a href="{% url 'character_detail' character.pk %}">View</a>
                 <a href="{% url 'character_update' character.pk %}">Edit</a>
                 <a href="{% url 'character_delete' character.pk %}">Delete</a>
             </li>

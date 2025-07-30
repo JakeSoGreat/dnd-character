@@ -58,7 +58,6 @@ def character_list(request):
 def character_create(request):
     if request.method == 'POST':
         character_form = CharacterForm(request.POST)
-        
         # Handle quick-add forms
         if 'add_spell' in request.POST:
             spell_form = QuickSpellForm(request.POST)
@@ -66,14 +65,12 @@ def character_create(request):
                 spell_form.save()
                 messages.success(request, 'Spell added successfully!')
                 return redirect('character_create')
-        
         elif 'add_item' in request.POST:
             item_form = QuickItemForm(request.POST)
             if item_form.is_valid():
                 item_form.save()
                 messages.success(request, 'Item added successfully!')
                 return redirect('character_create')
-        
         # Handle main character form
         elif character_form.is_valid():
             character = character_form.save(commit=False)
@@ -81,14 +78,11 @@ def character_create(request):
             character.save()
             character_form.save_m2m()
             return redirect('character_list')
-    
     else:
         character_form = CharacterForm()
-    
     # Initialize quick-add forms
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
-    
     return render(request, 'character_form.html', {
         'character_form': character_form,
         'spell_form': spell_form,
@@ -106,11 +100,9 @@ def character_update(request, pk):
             return redirect('character_list')
     else:
         character_form = CharacterForm(instance=character)
-    
     # Initialize quick-add forms for consistency
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
-    
     return render(request, 'character_form.html', {
         'character_form': character_form,
         'spell_form': spell_form,
@@ -125,3 +117,9 @@ def character_delete(request, pk):
         character.delete()
         return redirect('character_list')
     return render(request, 'character_confirm_delete.html', {'character': character})
+
+
+@login_required
+def character_detail(request, pk):
+    character = get_object_or_404(Character, pk=pk, user=request.user)
+    return render(request, 'character_detail.html', {'character': character})

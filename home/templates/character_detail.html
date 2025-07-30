@@ -1,0 +1,127 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+
+<div class="container my-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">{{ character.name }}</h2>
+            <small
+                >Level {{ character.level }} {{ character.race.name }} | {{
+                character.background.name }} | {{ character.alignment.name
+                }}</small
+            >
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h5>Description</h5>
+                    <p>{{ character.description }}</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Ability Scores</h5>
+                    <table class="table table-bordered text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>CON</th>
+                                <th>INT</th>
+                                <th>WIS</th>
+                                <th>CHA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ character.strength }}</td>
+                                <td>{{ character.dexterity }}</td>
+                                <td>{{ character.constitution }}</td>
+                                <td>{{ character.intelligence }}</td>
+                                <td>{{ character.wisdom }}</td>
+                                <td>{{ character.charisma }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <h5>Classes</h5>
+                    <ul>
+                        {% for cls in character.character_classes.all %}
+                        <li>
+                            {{ cls.name }}
+                            <small class="text-muted">{{ cls.features }}</small>
+                        </li>
+                        {% empty %}
+                        <li>No classes assigned.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Spells</h5>
+                    <ul>
+                        {% for spell in character.spells.all %}
+                        <li>
+                            {{ spell.name }}
+                            <small class="text-muted"
+                                >({{ spell.school }}, Level {{ spell.level
+                                }})</small
+                            >
+                        </li>
+                        {% empty %}
+                        <li>No spells known.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Items</h5>
+                    <ul>
+                        {% for item in character.items.all %}
+                        <li>
+                            {{ item.name }}
+                            <small class="text-muted">({{ item.type }})</small>
+                        </li>
+                        {% empty %}
+                        <li>No items carried.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <h5>Feats</h5>
+                    <ul>
+                        {% for feat in character.feats.all %}
+                        <li>
+                            <strong>{{ feat.name }}</strong>
+                            {% if feat.prerequisite %}
+                            <span class="text-muted"
+                                >({{ feat.prerequisite }})</span
+                            >
+                            {% endif %}
+                            <br />
+                            <small>{{ feat.description }}</small>
+                        </li>
+                        {% empty %}
+                        <li>No feats.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <a href="{% url 'character_list' %}" class="btn btn-secondary"
+                >Back to My Characters</a
+            >
+            <a
+                href="{% url 'character_update' character.pk %}"
+                class="btn btn-primary"
+                >Edit Character</a
+            >
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/character_sheet.css' %}" />
+{% endblock %}

@@ -86,14 +86,12 @@ class Character(models.Model):
     alignment = models.ForeignKey(
         Alignment, on_delete=models.SET_NULL, null=True
     )
-    
     strength = models.PositiveIntegerField(default=10)
     dexterity = models.PositiveIntegerField(default=10)
     constitution = models.PositiveIntegerField(default=10)
     intelligence = models.PositiveIntegerField(default=10)
     wisdom = models.PositiveIntegerField(default=10)
     charisma = models.PositiveIntegerField(default=10)
-    
     # Many-to-many relationships
     character_classes = models.ManyToManyField(Class, blank=True)
     spells = models.ManyToManyField(Spell, blank=True)
@@ -102,5 +100,3 @@ class Character(models.Model):
 
     def __str__(self):
         return self.name
-
-

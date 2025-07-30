@@ -13,4 +13,5 @@ urlpatterns = [
     path('characters/create/', views.character_create, name='character_create'),
     path('characters/<int:pk>/edit/', views.character_update, name='character_update'),
     path('characters/<int:pk>/delete/', views.character_delete, name='character_delete'),
+    path('characters/<int:pk>/', views.character_detail, name='character_detail'),
 ]
