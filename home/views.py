@@ -72,14 +72,17 @@ def character_create(request):
                 messages.success(request, 'Item added successfully!')
                 return redirect('character_create')
         # Handle main character form
-        elif character_form.is_valid():
-            character = character_form.save(commit=False)
-            character.user = request.user
-            character.save()
-            character_form.save_m2m()
-            return redirect('character_list')
+        else:
+            if character_form.is_valid():
+                character = character_form.save(commit=False)
+                character.user = request.user
+                character.save()
+                character_form.save_m2m()  # Save many-to-many relationships
+                messages.success(request, 'Character saved successfully!')
+                return redirect('character_detail', pk=character.pk)
     else:
         character_form = CharacterForm()
+    
     # Initialize quick-add forms
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
@@ -96,10 +99,14 @@ def character_update(request, pk):
     if request.method == 'POST':
         character_form = CharacterForm(request.POST, instance=character)
         if character_form.is_valid():
-            character_form.save()
-            return redirect('character_list')
+            character = character_form.save(commit=False)
+            character.save()
+            character_form.save_m2m()  # Save many-to-many relationships
+            messages.success(request, 'Character updated successfully!')
+            return redirect('character_detail', pk=character.pk)
     else:
         character_form = CharacterForm(instance=character)
+    
     # Initialize quick-add forms for consistency
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
