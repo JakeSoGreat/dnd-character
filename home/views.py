@@ -34,7 +34,7 @@ def register(request):
             messages.error(request, 'Username already exists.')
         else:
             user = User.objects.create_user(username=username, password=password)
-            # Specify the backend explicitly
+            
             from django.contrib.auth import login
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
