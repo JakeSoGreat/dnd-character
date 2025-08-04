@@ -128,6 +128,7 @@ def character_delete(request, pk):
     character = get_object_or_404(Character, pk=pk, user=request.user)
     if request.method == 'POST':
         character.delete()
+        messages.success(request, 'Character deleted successfully!')
         return redirect('character_list')
     return render(request, 'character_confirm_delete.html', {'character': character})
 

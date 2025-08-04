@@ -55,7 +55,26 @@
                 </div>
             </div>
         </nav>
-
+        
+        {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+            <div
+                class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                role="alert"
+            >
+                {{ message }}
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
         <!-- Main Content -->
         <div class="container mb-5">{% block content %}{% endblock %}</div>
 
@@ -72,7 +91,7 @@
                             alt="Facebook"
                             width="24"
                             height="24"
-                        /></a>
+                    /></a>
                     <a
                         href="https://instagram.com"
                         target="_blank"
@@ -83,14 +102,14 @@
                             alt="Instagram"
                             width="24"
                             height="24"
-                        /></a>
+                    /></a>
                     <a href="https://twitter.com" target="_blank">
                         <img
                             src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"
                             alt="Twitter"
                             width="24"
                             height="24"
-                        /></a>
+                    /></a>
                 </div>
             </div>
         </footer>
@@ -99,3 +118,4 @@
         {% block extra_js %}{% endblock %}
     </body>
 </html>
+
