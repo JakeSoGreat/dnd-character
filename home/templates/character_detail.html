@@ -64,9 +64,8 @@
                         <li>
                             {{ spell.name }}
                             <small class="text-muted"
-                                >({{ spell.school }}, Level {{ spell.level
-                                }})</small
-                            >
+                                >({{ spell.school }}, Level {{ spell.level }})
+                            </small>
                         </li>
                         {% empty %}
                         <li>No spells known.</li>
@@ -96,8 +95,8 @@
                             <strong>{{ feat.name }}</strong>
                             {% if feat.prerequisite %}
                             <span class="text-muted"
-                                >({{ feat.prerequisite }})</span
-                            >
+                                >({{ feat.prerequisite }})
+                            </span>
                             {% endif %}
                             <br />
                             <small>{{ feat.description }}</small>

@@ -31,20 +31,17 @@ class CharacterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Make many-to-many fields optional
         self.fields['character_classes'].required = True
         self.fields['spells'].required = False
         self.fields['items'].required = False
         self.fields['feats'].required = True
-        
-        # Add help text
         self.fields['character_classes'].help_text = "Select character classes"
         self.fields['spells'].help_text = "Select known spells"
         self.fields['items'].help_text = "Select carried items"
         self.fields['feats'].help_text = "Select character feats"
 
 
-# Quick-add forms for new spells and items only
+# Quick-add forms for new spells and items
 class QuickSpellForm(forms.ModelForm):
     class Meta:
         model = Spell

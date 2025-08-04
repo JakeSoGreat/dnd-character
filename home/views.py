@@ -20,7 +20,7 @@ def custom_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # Change 'home' to your desired redirect
+            return redirect('home')
         else:
             messages.error(request, 'Invalid username or password.')
     return render(request, 'login.html')
@@ -34,7 +34,6 @@ def register(request):
             messages.error(request, 'Username already exists.')
         else:
             user = User.objects.create_user(username=username, password=password)
-            
             from django.contrib.auth import login
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
@@ -58,7 +57,6 @@ def character_list(request):
 def character_create(request):
     if request.method == 'POST':
         character_form = CharacterForm(request.POST)
-        # Handle quick-add forms
         if 'add_spell' in request.POST:
             spell_form = QuickSpellForm(request.POST)
             if spell_form.is_valid():
@@ -71,19 +69,16 @@ def character_create(request):
                 item_form.save()
                 messages.success(request, 'Item added successfully!')
                 return redirect('character_create')
-        # Handle main character form
         else:
             if character_form.is_valid():
                 character = character_form.save(commit=False)
                 character.user = request.user
                 character.save()
-                character_form.save_m2m()  # Save many-to-many relationships
+                character_form.save_m2m()
                 messages.success(request, 'Character saved successfully!')
                 return redirect('character_detail', pk=character.pk)
     else:
         character_form = CharacterForm()
-    
-    # Initialize quick-add forms
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
     return render(request, 'character_form.html', {
@@ -97,17 +92,28 @@ def character_create(request):
 def character_update(request, pk):
     character = get_object_or_404(Character, pk=pk, user=request.user)
     if request.method == 'POST':
-        character_form = CharacterForm(request.POST, instance=character)
-        if character_form.is_valid():
-            character = character_form.save(commit=False)
-            character.save()
-            character_form.save_m2m()  # Save many-to-many relationships
-            messages.success(request, 'Character updated successfully!')
-            return redirect('character_detail', pk=character.pk)
+        if 'add_spell' in request.POST:
+            spell_form = QuickSpellForm(request.POST)
+            if spell_form.is_valid():
+                spell_form.save()
+                messages.success(request, 'Spell added successfully!')
+                return redirect('character_update', pk=pk)
+        elif 'add_item' in request.POST:
+            item_form = QuickItemForm(request.POST)
+            if item_form.is_valid():
+                item_form.save()
+                messages.success(request, 'Item added successfully!')
+                return redirect('character_update', pk=pk)
+        else:
+            character_form = CharacterForm(request.POST, instance=character)
+            if character_form.is_valid():
+                character = character_form.save(commit=False)
+                character.save()
+                character_form.save_m2m()
+                messages.success(request, 'Character updated successfully!')
+                return redirect('character_detail', pk=character.pk)
     else:
         character_form = CharacterForm(instance=character)
-    
-    # Initialize quick-add forms for consistency
     spell_form = QuickSpellForm()
     item_form = QuickItemForm()
     return render(request, 'character_form.html', {
