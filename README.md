@@ -1,22 +1,22 @@
 # D&D Character Sheet Manager
 
-A Django web application for creating, managing, and tracking Dungeons & Dragons character sheets. Features an intuitive interface and comprehensive character customization.
+A Django web application for creating, managing, and tracking Dungeons & Dragons character sheets. This project is designed for clarity, usability, and comprehensive character customization. It is submitted as a final project and will be graded for completeness and correctness.
 
 ---
 
 ## 🚀 Features
 
 - **User Authentication:** Secure registration and login
-- **Character Management:** Full CRUD for D&D characters
+- **Character Management:** Create, view, update, and delete D&D characters
 - **Character Attributes:**  
-    - Basic info (name, description, level)  
-    - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma  
-    - Race, Background, Alignment selection  
-    - Multi-class support  
-    - Spell & item inventory  
-    - Feat tracking
-- **Dynamic Content:** Add custom spells and items
-- **Responsive Design:** Bootstrap-powered, mobile-friendly
+     - Basic info (name, description, level)  
+     - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma  
+     - Race, Background, Alignment selection  
+     - Multi-class support  
+     - Spell & item inventory  
+     - Feat tracking
+- **Custom Content:** Add custom spells and items
+- **Responsive Design:** Mobile-friendly interface using Bootstrap
 - **Admin Panel:** Django admin for data management
 
 ---
@@ -64,8 +64,8 @@ Designed in Lucidchart, normalized for best practices.
 2. **Create & activate virtual environment**
 3. **Install dependencies**
 4. **Configure environment**
-     - Copy `.env.example` to `.env`
-     - Set `SECRET_KEY` and `DATABASE_URL`
+      - Copy `.env.example` to `.env`
+      - Set `SECRET_KEY` and `DATABASE_URL`
 5. **Database setup**
 6. **Run development server**
 
@@ -81,11 +81,11 @@ Visit [http://localhost:8000](http://localhost:8000) to access the app.
 2. Go to **My Characters**
 3. Click **Create New Character**
 4. Fill in details:
-     - Basic info
-     - Ability scores (1–20)
-     - Race, background, alignment
-     - Classes, spells, items
-     - Add custom spells/items
+      - Basic info
+      - Ability scores (1–20)
+      - Race, background, alignment
+      - Classes, spells, items
+      - Add custom spells/items
 
 ### Character Management
 
@@ -129,22 +129,21 @@ Developed with help from **GitHub Copilot** for:
 
 ---
 
-## 🤝 Contributing
+## 🧪 Testing & Verification
 
-1. Fork the repo
-2. Create a feature branch  
-     `git checkout -b feature/new-feature`
-3. Commit changes  
-     `git commit -am 'Add new feature'`
-4. Push branch  
-     `git push origin feature/new-feature`
-5. Create a Pull Request
+This section will be updated with test results and verification steps as development progresses.
+
+- **Unit Tests:** [To be added]
+- **Integration Tests:** [To be added]
+- **Manual Verification:** [To be added]
+- **Test Coverage:** [To be added]
 
 ---
 
+
 ## 🏆 Credits
 
-- **Developer:** Jacob [Your Last Name]
+- **Developer:** Jacob Smith
 - **Framework:** Django Software Foundation
 - **UI:** Bootstrap Team
 - **Database Design:** Lucidchart
@@ -169,7 +168,6 @@ D&D is a trademark of Wizards of the Coast.
 - Character sharing
 - Advanced spell/item filtering
 - Character portraits/images
-- Mobile app version
 
 ---
 
