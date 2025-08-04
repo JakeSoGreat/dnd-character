@@ -57,34 +57,17 @@ def character_list(request):
 def character_create(request):
     if request.method == 'POST':
         character_form = CharacterForm(request.POST)
-        if 'add_spell' in request.POST:
-            spell_form = QuickSpellForm(request.POST)
-            if spell_form.is_valid():
-                spell_form.save()
-                messages.success(request, 'Spell added successfully!')
-                return redirect('character_create')
-        elif 'add_item' in request.POST:
-            item_form = QuickItemForm(request.POST)
-            if item_form.is_valid():
-                item_form.save()
-                messages.success(request, 'Item added successfully!')
-                return redirect('character_create')
-        else:
-            if character_form.is_valid():
-                character = character_form.save(commit=False)
-                character.user = request.user
-                character.save()
-                character_form.save_m2m()
-                messages.success(request, 'Character saved successfully!')
-                return redirect('character_detail', pk=character.pk)
+        if character_form.is_valid():
+            character = character_form.save(commit=False)
+            character.user = request.user
+            character.save()
+            character_form.save_m2m()
+            messages.success(request, 'Character saved successfully!')
+            return redirect('character_detail', pk=character.pk)
     else:
         character_form = CharacterForm()
-    spell_form = QuickSpellForm()
-    item_form = QuickItemForm()
     return render(request, 'character_form.html', {
         'character_form': character_form,
-        'spell_form': spell_form,
-        'item_form': item_form
     })
 
 
