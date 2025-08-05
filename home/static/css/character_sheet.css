@@ -24,3 +24,33 @@ h5 {
 ul {
     list-style-type: square;
 }
+
+/* Header styling */
+.navbar {
+    background-color: #090809 !important;
+    border-bottom: 3px solid #db0711;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #ffffff !important;
+}
+
+.nav-link:hover {
+    color: #db0711 !important;
+}
+
+/* Footer styling */
+footer {
+    background-color: #26282a !important;
+    border-top: 3px solid #db0711;
+}
+
+footer .text-muted {
+    color: #ffffff !important;
+}
+
+/* Footer icon styling */
+footer img {
+    filter: brightness(0) invert(1);
+}
