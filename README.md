@@ -1,22 +1,22 @@
 # D&D Character Sheet Manager
 
-A Django web application for creating, managing, and tracking Dungeons & Dragons character sheets. This project is designed for clarity, usability, and comprehensive character customization. It is submitted as a final project and will be graded for completeness and correctness.
+A Django web app for creating, managing, and tracking Dungeons & Dragons character sheets. Built for clarity, usability, and deep customization. Submitted as a final project for grading on completeness and correctness.
 
 ---
 
 ## 🚀 Features
 
-- **User Authentication:** Secure registration and login
-- **Character Management:** Create, view, update, and delete D&D characters
+- **User Authentication:** Secure registration & login
+- **Character Management:** Create, view, update, delete D&D characters
 - **Character Attributes:**  
-     - Basic info (name, description, level)  
-     - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma  
-     - Race, Background, Alignment selection  
-     - Multi-class support  
-     - Spell & item inventory  
-     - Feat tracking
-- **Custom Content:** Add custom spells and items
-- **Responsive Design:** Mobile-friendly interface using Bootstrap
+      - Name, description, level  
+      - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma  
+      - Race, background, alignment  
+      - Multi-class support  
+      - Spell & item inventory  
+      - Feat tracking
+- **Custom Content:** Add custom spells & items
+- **Responsive Design:** Mobile-friendly (Bootstrap)
 - **Admin Panel:** Django admin for data management
 
 ---
@@ -64,8 +64,8 @@ Designed in Lucidchart, normalized for best practices.
 2. **Create & activate virtual environment**
 3. **Install dependencies**
 4. **Configure environment**
-      - Copy `.env.example` to `.env`
-      - Set `SECRET_KEY` and `DATABASE_URL`
+       - Copy `.env.example` to `.env`
+       - Set `SECRET_KEY` and `DATABASE_URL`
 5. **Database setup**
 6. **Run development server**
 
@@ -81,11 +81,11 @@ Visit [http://localhost:8000](http://localhost:8000) to access the app.
 2. Go to **My Characters**
 3. Click **Create New Character**
 4. Fill in details:
-      - Basic info
-      - Ability scores (1–20)
-      - Race, background, alignment
-      - Classes, spells, items
-      - Add custom spells/items
+       - Basic info
+       - Ability scores (1–20)
+       - Race, background, alignment
+       - Classes, spells, items
+       - Add custom spells/items
 
 ### Character Management
 
@@ -139,7 +139,6 @@ This section will be updated with test results and verification steps as develop
 - **Test Coverage:** [To be added]
 
 ---
-
 
 ## 🏆 Credits
 
