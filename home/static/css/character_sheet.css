@@ -1,7 +1,13 @@
+/* body styling */
+.main-body {
+    min-height: 100vh;
+}
+
 /* Header styling */
 .navbar {
     background-color: #090809 !important;
     border-bottom: 3px solid #db0711;
+    font-family: "Roboto Slab", "Times New Roman", serif;
 }
 
 .navbar-brand,
@@ -53,4 +59,26 @@ h5 {
 }
 ul {
     list-style-type: square;
+}
+
+.hero-section {
+    background: url("/static/images/hero_image.jpg") 50% 25%/cover no-repeat;
+    color: white;
+    border-radius: 10px;
+    width: 936px;
+    height: 375px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+.hero-section h1 {
+    font-family: "Cinzel", "Georgia", serif;
+}
+
+.hero-section h1,
+.hero-section p {
+    text-shadow: 1px 1px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black;
 }
