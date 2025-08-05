@@ -23,10 +23,10 @@ class CharacterForm(forms.ModelForm):
             'intelligence': forms.NumberInput(attrs={'min': 1, 'max': 20, 'class': 'form-control'}),
             'wisdom': forms.NumberInput(attrs={'min': 1, 'max': 20, 'class': 'form-control'}),
             'charisma': forms.NumberInput(attrs={'min': 1, 'max': 20, 'class': 'form-control'}),
-            'character_classes': forms.CheckboxSelectMultiple(),
-            'spells': forms.CheckboxSelectMultiple(),
-            'items': forms.CheckboxSelectMultiple(),
-            'feats': forms.CheckboxSelectMultiple(),
+            'character_classes': forms.SelectMultiple(attrs={'class': 'form-control', 'size': '5'}),
+            'spells': forms.SelectMultiple(attrs={'class': 'form-control', 'size': '5'}),
+            'items': forms.SelectMultiple(attrs={'class': 'form-control', 'size': '5'}),
+            'feats': forms.SelectMultiple(attrs={'class': 'form-control', 'size': '5'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -34,11 +34,20 @@ class CharacterForm(forms.ModelForm):
         self.fields['character_classes'].required = True
         self.fields['spells'].required = False
         self.fields['items'].required = False
-        self.fields['feats'].required = True
-        self.fields['character_classes'].help_text = "Select character classes"
-        self.fields['spells'].help_text = "Select known spells"
-        self.fields['items'].help_text = "Select carried items"
-        self.fields['feats'].help_text = "Select character feats"
+        self.fields['feats'].required = False
+        self.fields['character_classes'].help_text = "Hold Ctrl (Cmd on Mac) to select multiple classes"
+        self.fields['spells'].help_text = "Hold Ctrl (Cmd on Mac) to select multiple spells"
+        self.fields['items'].help_text = "Hold Ctrl (Cmd on Mac) to select multiple items"
+        self.fields['feats'].help_text = "Hold Ctrl (Cmd on Mac) to select multiple feats"
+
+    def clean_level(self):
+        level = self.cleaned_data.get('level')
+        if level is not None:
+            if level > 20:
+                raise forms.ValidationError("Character level cannot be higher than 20.")
+            if level < 1:
+                raise forms.ValidationError("Character level cannot be lower than 1.")
+        return level
 
 
 # Quick-add forms for new spells and items
