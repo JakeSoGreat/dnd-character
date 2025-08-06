@@ -101,11 +101,79 @@ ul {
     border-radius: 10px;
     width: 936px;
     height: 375px;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Roboto Slab", "Times New Roman", serif;
+    overflow: hidden;
+}
+
+@media (max-width: 320px) {
+    .hero-section {
+        width: 100%;
+        height: 250px;
+    }
+
+    #hero-title {
+        font-size: 1.5rem;
+        margin-bottom: 5px !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero-section {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .hero-section a {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    #hero-title {
+        margin-bottom: 10px !important;
+    }
+
+    .character-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        width: 100%;
+        height: 350px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.85em;
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+
+    .character-form .helptext,
+    .character-form small.form-text,
+    .character-form .help-text {
+        display: none !important;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    #description {
+        width: 60%;
+    }
 }
 
 .hero-section h1 {
