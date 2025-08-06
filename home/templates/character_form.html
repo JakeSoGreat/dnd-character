@@ -1,90 +1,100 @@
 {% extends "base.html" %} 
 {% block content %}
 
-<h2>
-    {{ character_form.instance.pk|yesno:'Edit Character,Create Character' }}
-</h2>
+<div class="character-form-container">
+    <h2>
+        {{ character_form.instance.pk|yesno:'Edit Character,Create Character' }}
+    </h2>
 
+    <ul class="nav nav-tabs" id="characterTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button
+                class="nav-link active"
+                id="character-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#character"
+                type="button"
+            >
+                Character Info
+            </button>
+        </li>
+        {% if character_form.instance.pk %}
+        <li class="nav-item" role="presentation">
+            <button
+                class="nav-link"
+                id="quick-add-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#quick-add"
+                type="button"
+            >
+                Add New Spells & Items
+            </button>
+        </li>
+        {% endif %}
+    </ul>
 
-<ul class="nav nav-tabs" id="characterTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button
-            class=" form-tab nav-link active"
-            id="character-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#character"
-            type="button"
+    <div class="tab-content" id="characterTabsContent">
+        <!-- Main Character Form Tab -->
+        <div
+            class="tab-pane fade show active character-form"
+            id="character"
+            role="tabpanel"
         >
-            Character Info
-        </button>
-    </li>
-    {% if character_form.instance.pk %}
-    <li class="nav-item" role="presentation">
-        <button
-            class="form-tab nav-link"
-            id="quick-add-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#quick-add"
-            type="button"
-        >
-            Add New Spells & Items
-        </button>
-    </li>
-    {% endif %}
-</ul>
-
-<div class="tab-content" id="characterTabsContent">
-    <!-- Main Character Form Tab -->
-    <div class="tab-pane fade show active" id="character" role="tabpanel">
-        <div class="mt-3">
             <form method="post">
                 {% csrf_token %} {{ character_form.as_p }}
-                <button type="submit" class="btn btn-primary">
-                    Save Character
-                </button>
-                <a href="{% url 'character_list' %}" class="btn btn-secondary"
-                    >Back to list</a
-                >
+                <div class="form-buttons">
+                    <button type="submit" class="form-btn form-btn-primary">
+                        Save Character
+                    </button>
+                    <a
+                        href="{% url 'character_list' %}"
+                        class="form-btn form-btn-secondary"
+                    >
+                        Back to list
+                    </a>
+                </div>
             </form>
         </div>
-    </div>
 
-    <!-- Quick Add Tab -->
-     {% if character_form.instance.pk %}
-    <div class="tab-pane fade" id="quick-add" role="tabpanel">
-        <div class="mt-3">
-            <div class="row">
-                <div class="col-md-6">
+        <!-- Quick Add Tab -->
+        {% if character_form.instance.pk %}
+        <div class="tab-pane fade" id="quick-add" role="tabpanel">
+            <div class="quick-add-section">
+                <div class="quick-add-form">
                     <h5>Add New Spell</h5>
-                    <form method="post">
+                    <form method="post" class="character-form">
                         {% csrf_token %} {{ spell_form.as_p }}
-                        <button
-                            type="submit"
-                            name="add_spell"
-                            class="btn btn-success"
-                        >
-                            Add Spell
-                        </button>
+                        <div class="form-buttons">
+                            <button
+                                type="submit"
+                                name="add_spell"
+                                class="form-btn form-btn-success"
+                            >
+                                Add Spell
+                            </button>
+                        </div>
                     </form>
                 </div>
 
-                <div class="col-md-6">
+                <div class="quick-add-form">
                     <h5>Add New Item</h5>
-                    <form method="post">
+                    <form method="post" class="character-form">
                         {% csrf_token %} {{ item_form.as_p }}
-                        <button
-                            type="submit"
-                            name="add_item"
-                            class="btn btn-success"
-                        >
-                            Add Item
-                        </button>
+                        <div class="form-buttons">
+                            <button
+                                type="submit"
+                                name="add_item"
+                                class="form-btn form-btn-success"
+                            >
+                                Add Item
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 
 {% endblock %}
