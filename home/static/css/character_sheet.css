@@ -62,7 +62,7 @@ ul {
 }
 
 .hero-section {
-    background: url("/static/images/hero_image.jpg") 50% 25%/cover no-repeat;
+    background: url("/static/images/hero_image.jpg") 50% 25% / cover no-repeat;
     color: white;
     border-radius: 10px;
     width: 936px;
@@ -80,5 +80,109 @@ ul {
 
 .hero-section h1,
 .hero-section p {
-    text-shadow: 1px 1px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black;
+    text-shadow: 1px 1px 0px black, -1px -1px 0px black, 1px -1px 0px black,
+        -1px 1px 0px black;
+}
+
+/* Login and Register Form Styling */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 40px;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+.auth-container h2 {
+    font-family: "Cinzel", "Georgia", serif;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #db0711;
+    box-shadow: 0 0 0 3px rgba(219, 7, 17, 0.1);
+}
+
+.auth-button {
+    padding: 12px 24px;
+    background-color: #26282A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.auth-button:hover {
+    background-color: #DB0711;
+    transform: translateY(-1px);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.auth-link a {
+    color: #db0711;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.auth-messages li {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb;
 }
