@@ -3,6 +3,13 @@
     min-height: 100vh;
 }
 
+/* Character Form Styling */
+.form-tab {
+    font-family: "Roboto Slab", "Times New Roman", serif;
+    letter-spacing: 1px;
+    color: #0c0c0c !important;
+}
+
 /* Header styling */
 .navbar {
     background-color: #090809 !important;
@@ -12,7 +19,17 @@
 
 .navbar-brand,
 .nav-link {
+    color: #ffffff;
+}
+
+.navbar-brand {
+    cursor: default;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
     color: #ffffff !important;
+    text-decoration: none !important;
 }
 
 .nav-link:hover {
@@ -135,7 +152,7 @@ ul {
 
 .auth-button {
     padding: 12px 24px;
-    background-color: #26282A;
+    background-color: #26282a;
     color: white;
     border: none;
     border-radius: 5px;
@@ -148,7 +165,7 @@ ul {
 }
 
 .auth-button:hover {
-    background-color: #DB0711;
+    background-color: #db0711;
     transform: translateY(-1px);
 }
 
@@ -185,4 +202,160 @@ ul {
     border-radius: 5px;
     margin-bottom: 10px;
     border: 1px solid #f5c6cb;
+}
+
+/* Character List Styling */
+.character-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+.character-list-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.character-list-header h2 {
+    font-family: "Cinzel", "Georgia", serif;
+    letter-spacing: 1px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.create-character-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #090809;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-bottom: 30px;
+}
+
+.create-character-btn:hover {
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.character-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.character-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.character-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.character-info {
+    flex: 1;
+}
+
+.character-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.character-level {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.character-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #5a6268;
+    color: white;
+    text-decoration: none;
+}
+
+.edit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    color: white;
+    text-decoration: none;
+}
+
+.no-characters {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    color: #666;
+    font-style: italic;
+}
+
+.home-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #26282a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: #1a1c1e;
+    color: white;
+    text-decoration: none;
 }

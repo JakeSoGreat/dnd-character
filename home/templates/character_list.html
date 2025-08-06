@@ -1,22 +1,51 @@
 {% extends "base.html" %} {% block content %}
-    <head>
-        <title>Your Characters</title>
-    </head>
-    <body>
-        <h2>Your Characters</h2>
-        <a href="{% url 'character_create' %}">Create New Character</a>
-        <ul>
+<head>
+    <title>Your Characters</title>
+</head>
+<body>
+    <div class="character-list-container">
+        <div class="character-list-header">
+            <h2>{{ user.username }}'s Characters</h2>
+            <a href="{% url 'character_create' %}" class="create-character-btn"
+                >Create New Character</a
+            >
+        </div>
+
+        <ul class="character-list">
             {% for character in characters %}
-            <li>
-                {{ character.name }} (Level {{ character.level }})
-                <a href="{% url 'character_detail' character.pk %}">View</a>
-                <a href="{% url 'character_update' character.pk %}">Edit</a>
-                <a href="{% url 'character_delete' character.pk %}">Delete</a>
+            <li class="character-item">
+                <div class="character-info">
+                    <div class="character-name">{{ character.name }}</div>
+                    <div class="character-level">
+                        Level {{ character.level }}
+                    </div>
+                </div>
+                <div class="character-actions">
+                    <a
+                        href="{% url 'character_detail' character.pk %}"
+                        class="action-btn view-btn"
+                        >View</a
+                    >
+                    <a
+                        href="{% url 'character_update' character.pk %}"
+                        class="action-btn edit-btn"
+                        >Edit</a
+                    >
+                    <a
+                        href="{% url 'character_delete' character.pk %}"
+                        class="action-btn delete-btn"
+                        >Delete</a
+                    >
+                </div>
             </li>
             {% empty %}
-            <li>No characters found.</li>
+            <li class="no-characters">No characters found.</li>
             {% endfor %}
         </ul>
-        <a href="{% url 'home' %}">Home</a>
-    </body>
+
+        <div style="text-align: center">
+            <a href="{% url 'home' %}" class="home-link">Back to Home</a>
+        </div>
+    </div>
+</body>
 {% endblock %}
