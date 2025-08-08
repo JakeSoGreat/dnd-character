@@ -72,6 +72,10 @@ The database follows Django best practices with normalized relationships:
 -   Many-to-Many: Character ↔ Classes, Spells, Items, Feats
 -   Foreign Keys: Character → Race, Background, Alignment
 
+**ERD Lucid Chart**
+
+![ERD Lucid Chart](home/static/images/Character_Sheet_Database.png)
+
 ---
 
 ## 📸 Application Screenshots
