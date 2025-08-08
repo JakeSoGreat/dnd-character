@@ -228,12 +228,6 @@ The automated testing suite was developed with significant assistance from GitHu
 -   Consistent test naming conventions
 -   Proper test isolation and cleanup
 
-#### Running Tests
-
-```bash
-# Run all tests
-python manage.py test
-
 ---
 
 ## ✅ Form Validation & User Experience
