@@ -1,4 +1,7 @@
-# D&D Character Sheet Manager
+![Title Pic](home/static/images/epic.jpg)
+
+
+# Cast of Many Characters
 
 A Django web application for creating, managing, and tracking Dungeons & Dragons character sheets. Built with modern web technologies, this app provides an intuitive interface for D&D players to manage their characters with full CRUD functionality, user authentication, and responsive design.
 
