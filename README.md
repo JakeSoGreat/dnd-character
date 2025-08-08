@@ -1,4 +1,4 @@
-![Title Pic](home/static/images/epic.jpg)
+![Title Pic](home/static/images/hero_image.jpg)
 
 
 # Cast of Many Characters
