@@ -78,11 +78,19 @@ The database follows Django best practices with normalized relationships:
 
 ### Home Page
 
-_[Screenshot placeholder - Hero section with navigation]_
+![Home page](home/static/images/homepage.png)
+
+<p align="center">
+       <img src="home/static/images/homepage.png" alt="Home page" width="700">
+</p>
 
 ### Character List
 
-_[Screenshot placeholder - Character management dashboard]_
+![Character List page](home/static/images/characterlist.png)
+
+<p align="center">
+       <img src="home/static/images/characterlist.png" alt="Character list page" width="700">
+</p>
 
 ### Character Creation Form
 
