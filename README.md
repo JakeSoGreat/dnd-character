@@ -80,29 +80,25 @@ The database follows Django best practices with normalized relationships:
 
 ![Home page](home/static/images/homepage.png)
 
-<p align="center">
-       <img src="home/static/images/homepage.png" alt="Home page" width="700">
-</p>
-
 ### Character List
 
 ![Character List page](home/static/images/characterlist.png)
 
-<p align="center">
-       <img src="home/static/images/characterlist.png" alt="Character list page" width="700">
-</p>
-
 ### Character Creation Form
 
-_[Screenshot placeholder - Tabbed character creation interface]_
+![Character Creation - 1](home/static/images/characterform1.png)
+![Character Creation - 2](home/static/images/characterform2.png)
+![Character Creation - 3](home/static/images/characterform3.png)
+![Character Creation - 4](home/static/images/characterform4.png)
+![Character Creation - 5](home/static/images/characterform5.png)
 
 ### Character Detail View
 
-_[Screenshot placeholder - Complete character sheet display]_
+![Character Detail Page](home/static/images/characterdetail.png)
 
 ### Mobile Responsive Design
 
-_[Screenshot placeholder - Mobile view demonstrations]_
+![Mobile Responsive View](home/static/images/responsive.png)
 
 ---
 
