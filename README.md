@@ -78,65 +78,129 @@ _[Screenshot placeholder - Mobile view demonstrations]_
 
 ---
 
-## ⚡ Installation & Setup
+## 🚢 Deployment & Setup
 
-### Prerequisites
+### Heroku Deployment
 
--   Python 3.13+
--   PostgreSQL (for production)
--   Git
+The application is deployed on Heroku.
 
-### Local Development
+**What is Heroku?**  
+Heroku is a cloud platform that enables developers to build, deploy, monitor, and manage applications with ease.
 
-1. **Clone the repository**
+#### Prerequisites
 
-    ```bash
-    git clone [repository-url]
-    cd dnd-character
-    ```
+- A [Heroku](https://heroku.com) account (sign up if you don’t have one)
+- [Git](https://git-scm.com/) installed locally
+- [Python 3.13+](https://www.python.org/downloads/) installed
 
-2. **Create & activate virtual environment**
+#### Deployment Steps
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  
-    ```
+1. **Log in to Heroku**  
+       Sign in to your Heroku account.
 
-3. **Install dependencies**
+2. **Create a New App**  
+       - Click **New** > **Create new app**
+       - Choose a unique app name and region, then click **Create app**
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+3. **Configure Environment Variables**  
+       - Go to the **Settings** tab and click **Reveal Config Vars**
+       - Add the following keys:
+         - `DISABLE_COLLECTSTATIC` = `1`
+         - `DATABASE_URL` = *(your database URL, provided by your database service)*
+         - `SECRET_KEY` = *(a secure, random string; use a [secret key generator](https://djecrety.ir/) if needed)*
 
-4. **Configure environment variables**
+4. **Prepare Your Project**  
+       In your terminal, install dependencies and update requirements:
+       ```bash
+       pip install gunicorn~=20.1
+       pip install -r requirements.txt
+       pip freeze > requirements.txt
+       ```
 
-    ```bash
-    # Set environment variables for:
-    # SECRET_KEY
-    # DATABASE_URL (for production)
-    ```
+5. **Create Environment File**  
+       At your project root, create an `env.py` file:
+       ```python
+       import os
+       os.environ["DATABASE_URL"] = "your_database_url"
+       os.environ["SECRET_KEY"] = "your_secret_key"
+       ```
 
-5. **Database setup**
+6. **Create a Procfile**  
+       At the project root, add a file named `Procfile` with:
+       ```
+       web: gunicorn my_project.wsgi
+       ```
 
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    python manage.py createsuperuser
-    python manage.py loaddata initial_data.json  
-    ```
+7. **Update Django Settings**  
+       - Set `DEBUG = False` in `settings.py` (**important for security**)
+       - Add `'.herokuapp.com'` to the `ALLOWED_HOSTS` list
 
-6. **Collect static files**
+8. **Push to GitHub**  
+       Commit and push your code to your GitHub repository.
 
-    ```bash
-    python manage.py collectstatic
-    ```
+9. **Connect Heroku to GitHub**  
+       - In Heroku, go to the **Deploy** tab
+       - Connect your app to your GitHub repository
+       - Click **Deploy Branch** to deploy your project
 
-7. **Run development server**
-    ```bash
-    python manage.py runserver
-    ```
+---
 
-Visit [http://localhost:8000](http://localhost:8000) to access the application.
+### 🌀 Cloning the Repository
+
+To clone this project:
+
+1. On GitHub, navigate to the repository.
+2. Click the **Code** button and copy the repository URL.
+3. Open your terminal and navigate to your desired directory.
+4. Run:
+       ```bash
+       git clone <repository-url>
+       ```
+
+---
+
+### 🍴 Forking the Repository
+
+To fork the repository:
+
+1. Log in to GitHub and navigate to the repository.
+2. Click the **Fork** button (top right).
+3. You’ll now have a copy of the repository in your own GitHub account.
+
+---
+
+### ⚙️ Running the Project Locally
+
+After cloning or forking:
+
+1. **Install dependencies**  
+       ```bash
+       pip install -r requirements.txt
+       ```
+
+2. **Apply migrations**  
+       ```bash
+       python manage.py makemigrations
+       python manage.py migrate
+       ```
+
+3. **Create a superuser**  
+       ```bash
+       python manage.py createsuperuser
+       ```
+
+4. **Run the development server**  
+       ```bash
+       python manage.py runserver
+       ```
+
+5. **Stop the server**  
+       Press `CTRL+C` (Windows/Linux) or `⌘+C` (Mac) in the terminal.
+
+---
+
+**Note:**  
+Always set `DEBUG = False` before deploying to production for security reasons.
 
 ---
 
