@@ -4,13 +4,33 @@ A Django web application for creating, managing, and tracking Dungeons & Dragons
 
 ---
 
+## 📋 Table of Contents
+
+-   [🚀 Features](#-features)
+-   [🛠️ Technology Stack](#️-technology-stack)
+-   [🗂️ Database Design](#️-database-design)
+-   [📸 Application Screenshots](#-application-screenshots)
+-   [🚢 Deployment & Setup](#-deployment--setup)
+-   [📝 Usage Guide](#-usage-guide)
+-   [🧪 Testing & Quality Assurance](#-testing--quality-assurance)
+-   [✅ Form Validation & User Experience](#-form-validation--user-experience)
+-   [🎨 Design & User Interface](#-design--user-interface)
+-   [🚢 Deployment](#-deployment)
+-   [🤖 AI Development Assistance](#-ai-development-assistance)
+-   [🏆 Credits & Acknowledgments](#-credits--acknowledgments)
+-   [📄 License & Legal](#-license--legal)
+-   [🔮 Future Enhancements](#-future-enhancements)
+-   [🔗 Links & Resources](#-links--resources)
+
+---
+
 ## 🚀 Features
 
 -   **User Authentication:** Secure registration, login, and logout system
 -   **Character Management:** Full CRUD operations for D&D characters
--   **Character Attributes:**  
-     - Name, description, level (1-20) - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma  
-     - Race, background, alignment selection - Multi-class support with class selection - Spell inventory management - Item inventory tracking - Feat assignment and tracking
+-   **Character Attributes:**
+    -   Name, description, level (1-20) - Six ability scores: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+    -   Race, background, alignment selection - Multi-class support with class selection - Spell inventory management - Item inventory tracking - Feat assignment and tracking
 -   **Quick Add Functionality:** Add custom spells and items directly from character edit page
 -   **Responsive Design:** Mobile-first design with Bootstrap 5.3.0
 -   **Form Validation:** Client and server-side validation with user-friendly error messages
@@ -89,59 +109,65 @@ Heroku is a cloud platform that enables developers to build, deploy, monitor, an
 
 #### Prerequisites
 
-- A [Heroku](https://heroku.com) account (sign up if you don’t have one)
-- [Git](https://git-scm.com/) installed locally
-- [Python 3.13+](https://www.python.org/downloads/) installed
+-   A [Heroku](https://heroku.com) account (sign up if you don’t have one)
+-   [Git](https://git-scm.com/) installed locally
+-   [Python 3.13+](https://www.python.org/downloads/) installed
 
 #### Deployment Steps
 
 1. **Log in to Heroku**  
-       Sign in to your Heroku account.
+    Sign in to your Heroku account.
 
-2. **Create a New App**  
-       - Click **New** > **Create new app**
-       - Choose a unique app name and region, then click **Create app**
+2. **Create a New App**
 
-3. **Configure Environment Variables**  
-       - Go to the **Settings** tab and click **Reveal Config Vars**
-       - Add the following keys:
-         - `DISABLE_COLLECTSTATIC` = `1`
-         - `DATABASE_URL` = *(your database URL, provided by your database service)*
-         - `SECRET_KEY` = *(a secure, random string; use a [secret key generator](https://djecrety.ir/) if needed)*
+    - Click **New** > **Create new app**
+    - Choose a unique app name and region, then click **Create app**
+
+3. **Configure Environment Variables**
+
+    - Go to the **Settings** tab and click **Reveal Config Vars**
+    - Add the following keys:
+        - `DISABLE_COLLECTSTATIC` = `1`
+        - `DATABASE_URL` = _(your database URL, provided by your database service)_
+        - `SECRET_KEY` = _(a secure, random string; use a [secret key generator](https://djecrety.ir/) if needed)_
 
 4. **Prepare Your Project**  
-       In your terminal, install dependencies and update requirements:
-       ```bash
-       pip install gunicorn~=20.1
-       pip install -r requirements.txt
-       pip freeze > requirements.txt
-       ```
+    In your terminal, install dependencies and update requirements:
+
+    ```bash
+    pip install gunicorn~=20.1
+    pip install -r requirements.txt
+    pip freeze > requirements.txt
+    ```
 
 5. **Create Environment File**  
-       At your project root, create an `env.py` file:
-       ```python
-       import os
-       os.environ["DATABASE_URL"] = "your_database_url"
-       os.environ["SECRET_KEY"] = "your_secret_key"
-       ```
+    At your project root, create an `env.py` file:
+
+    ```python
+    import os
+    os.environ["DATABASE_URL"] = "your_database_url"
+    os.environ["SECRET_KEY"] = "your_secret_key"
+    ```
 
 6. **Create a Procfile**  
-       At the project root, add a file named `Procfile` with:
-       ```
-       web: gunicorn my_project.wsgi
-       ```
+    At the project root, add a file named `Procfile` with:
 
-7. **Update Django Settings**  
-       - Set `DEBUG = False` in `settings.py` (**important for security**)
-       - Add `'.herokuapp.com'` to the `ALLOWED_HOSTS` list
+    ```
+    web: gunicorn my_project.wsgi
+    ```
+
+7. **Update Django Settings**
+
+    - Set `DEBUG = False` in `settings.py` (**important for security**)
+    - Add `'.herokuapp.com'` to the `ALLOWED_HOSTS` list
 
 8. **Push to GitHub**  
-       Commit and push your code to your GitHub repository.
+    Commit and push your code to your GitHub repository.
 
-9. **Connect Heroku to GitHub**  
-       - In Heroku, go to the **Deploy** tab
-       - Connect your app to your GitHub repository
-       - Click **Deploy Branch** to deploy your project
+9. **Connect Heroku to GitHub**
+    - In Heroku, go to the **Deploy** tab
+    - Connect your app to your GitHub repository
+    - Click **Deploy Branch** to deploy your project
 
 ---
 
@@ -153,9 +179,9 @@ To clone this project:
 2. Click the **Code** button and copy the repository URL.
 3. Open your terminal and navigate to your desired directory.
 4. Run:
-       ```bash
-       git clone <repository-url>
-       ```
+    ```bash
+    git clone <https://github.com/JakeSoGreat/dnd-character>
+    ```
 
 ---
 
@@ -173,29 +199,33 @@ To fork the repository:
 
 After cloning or forking:
 
-1. **Install dependencies**  
-       ```bash
-       pip install -r requirements.txt
-       ```
+1. **Install dependencies**
 
-2. **Apply migrations**  
-       ```bash
-       python manage.py makemigrations
-       python manage.py migrate
-       ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. **Create a superuser**  
-       ```bash
-       python manage.py createsuperuser
-       ```
+2. **Apply migrations**
 
-4. **Run the development server**  
-       ```bash
-       python manage.py runserver
-       ```
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+3. **Create a superuser**
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+4. **Run the development server**
+
+    ```bash
+    python manage.py runserver
+    ```
 
 5. **Stop the server**  
-       Press `CTRL+C` (Windows/Linux) or `⌘+C` (Mac) in the terminal.
+    Press `CTRL+C` (Windows/Linux) or `⌘+C` (Mac) in the terminal.
 
 ---
 
@@ -368,7 +398,6 @@ _[Screenshot placeholder - Mobile/tablet responsive testing]_
 -   WhiteNoise middleware for static file serving
 -   Automated collectstatic during deployment
 
-
 ---
 
 ## 🤖 AI Development Assistance
@@ -441,6 +470,8 @@ Dungeons & Dragons, D&D, and related terms are trademarks of Wizards of the Coas
 -   **Character Images:** Upload and display character portraits
 -   **Spell Descriptions:** Detailed spell information and effects
 -   **Equipment Management:** Advanced inventory with categories
+-   **Comprehensive Character Sheet:** Includes detailed tracking of skills, armor class, saving throws, conditions, and more.
+-   **Game Master Dashboard:** Enables Game Masters to view and manage all player characters within a campaign environment.
 
 ### Technical Improvements
 
@@ -460,4 +491,3 @@ Dungeons & Dragons, D&D, and related terms are trademarks of Wizards of the Coas
 **Bug Reports:** _[Issue tracker placeholder]_
 
 ---
-
