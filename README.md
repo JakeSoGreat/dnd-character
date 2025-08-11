@@ -294,15 +294,15 @@ Always set `DEBUG = False` before deploying to production for security reasons.
 
 **User Story Feedback**
 As a user, I want to receive clear success and error messages when submitting forms so that I know what actions were successful and what needs correction.
--  Outcome = Success
+-  Outcome = Pass
 
 **User Story Edit Character**
 As a user, I want to edit my character, so that I can update their stats and details as they level up.
--  Outcome = Success
+-  Outcome = Pass
 
 **User Story Create Character**
 As a user, I want to create a new character, so that I can start building my DND character sheet digitally.
--  Outcome = Success
+-  Outcome = Pass
 
 ### Automated Testing Suite
 
