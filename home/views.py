@@ -20,6 +20,7 @@ def custom_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, 'Login successful!')
             return redirect('home')
         else:
             messages.error(request, 'Invalid username or password.')
@@ -37,6 +38,7 @@ def register(request):
             from django.contrib.auth import login
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
+            messages.success(request, 'Registration successful! You are now logged in.')
             return redirect('home')
     return render(request, 'register.html')
 
