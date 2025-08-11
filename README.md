@@ -87,9 +87,13 @@ The database follows Django best practices with normalized relationships:
 
 ![Home page](home/static/images/homepage.png)
 
+The homepage provides a welcoming introduction to the application, featuring a visually engaging hero image and a concise summary of the app’s purpose. Users can quickly access navigation links to register, log in, or explore the main features. The layout is responsive, ensuring a seamless experience across devices, and highlights the core benefits of managing D&D character sheets online.
+
 ### Character List
 
 ![Character List page](home/static/images/characterlist.png)
+
+The Character List page displays all of your created D&D characters in a clean, organized table or card layout. Each entry shows key details such as character name, class, level, and race, with quick access buttons to view, edit, or delete each character. The page supports responsive design for easy browsing on any device, and provides a prominent button to create a new character.
 
 ### Character Creation Form
 
@@ -99,13 +103,19 @@ The database follows Django best practices with normalized relationships:
 ![Character Creation - 4](home/static/images/characterform4.png)
 ![Character Creation - 5](home/static/images/characterform5.png)
 
+The Character Creation Form is a multi-step interface designed to guide users through building a new D&D character. Each section collects essential details, including name, level, ability scores, race, background, alignment, and class selections. The form supports multi-classing, custom spell and item additions, and real-time validation to ensure all entries meet D&D rules. Intuitive navigation and clear field descriptions make the process accessible for both new and experienced players.
+
 ### Character Detail View
 
 ![Character Detail Page](home/static/images/characterdetail.png)
 
+The Character Detail page presents a comprehensive view of an individual D&D character. It displays all key attributes, including name, level, race, background, alignment, ability scores, classes (with multi-class support), spells, items, and feats. The layout is organized for clarity, allowing users to easily review and manage their character’s information. Action buttons enable quick editing or deletion, and the design adapts seamlessly to both desktop and mobile devices for optimal usability.
+
 ### Mobile Responsive Design
 
 ![Mobile Responsive View](home/static/images/responsive.png)
+
+The website is fully responsive, ensuring an optimal user experience across all devices. The layout automatically adapts to different screen sizes, from smartphones and tablets to desktops. Navigation menus collapse into a mobile-friendly format, forms and tables resize for readability, and images scale appropriately. All interactive elements remain accessible and easy to use on touch devices, providing a seamless experience whether you're managing characters at your desk or on the go.
 
 ---
 
@@ -314,6 +324,14 @@ The application includes comprehensive automated tests built with Django's testi
 -   Session management
 -   Password validation
 
+**Validation**
+
+![Css Validation](home/static/images/cssvalidation.png)
+
+![Html Validation](home/static/images/htmlvalidation.png)
+
+![Lighthouse Validation](home/static/images/lighthouse.png)
+
 #### AI-Assisted Test Development
 
 **GitHub Copilot Integration:**
@@ -379,6 +397,8 @@ _[Screenshot placeholder - Mobile/tablet responsive testing]_
 -   **Primary:** #db0711 (D&D red)
 -   **Secondary:** Neutral grays and whites
 -   **Gradients:** Subtle gradients for visual interest
+
+![Coolers Palette](home/static/images/coolors_palette.png)
 
 ### Responsive Breakpoints
 
