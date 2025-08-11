@@ -292,17 +292,32 @@ Always set `DEBUG = False` before deploying to production for security reasons.
 
 ### Manual Testing
 
-**User Story Feedback**
-As a user, I want to receive clear success and error messages when submitting forms so that I know what actions were successful and what needs correction.
--  Outcome = Pass
+**Manual testing for the following user stories was performed as described below, resulting in a passing outcome for each:**
 
-**User Story Edit Character**
-As a user, I want to edit my character, so that I can update their stats and details as they level up.
--  Outcome = Pass
+**User Story Feedback**  
+*Test Steps:*
+1. Submit various forms (e.g., character creation, edit) with both valid and invalid data.
+2. Observe the appearance of success messages after valid submissions.
+3. Observe clear error messages when submitting invalid or incomplete forms.
+*Passing Outcome:*  
+All forms displayed appropriate success or error messages, confirming user actions and highlighting corrections as needed.
 
-**User Story Create Character**
-As a user, I want to create a new character, so that I can start building my DND character sheet digitally.
--  Outcome = Pass
+**User Story Edit Character**  
+*Test Steps:*
+1. Log in as a user and navigate to the character list.
+2. Select a character and access the edit page.
+3. Change one or more character details (e.g., level, stats).
+4. Submit the form and verify that the changes are saved and reflected in the character detail view.
+*Passing Outcome:*  
+Character details updated successfully and changes were visible after saving.
+
+**User Story Create Character**  
+*Test Steps:*
+1. Log in and navigate to the character creation page.
+2. Fill out the required fields and submit the form.
+3. Verify that the new character appears in the character list and detail view.
+*Passing Outcome:*  
+New character was created and displayed correctly in the application.
 
 ### Automated Testing Suite
 
