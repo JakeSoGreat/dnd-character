@@ -288,6 +288,20 @@ Always set `DEBUG = False` before deploying to production for security reasons.
 
 ## 🧪 Testing & Quality Assurance
 
+### Manual Testing
+
+**User Story Feedback**
+As a user, I want to receive clear success and error messages when submitting forms so that I know what actions were successful and what needs correction.
+-  Outcome = Success
+
+**User Story Edit Character**
+As a user, I want to edit my character, so that I can update their stats and details as they level up.
+-  Outcome = Success
+
+**User Story Create Character**
+As a user, I want to create a new character, so that I can start building my DND character sheet digitally.
+-  Outcome = Success
+
 ### Automated Testing Suite
 
 The application includes comprehensive automated tests built with Django's testing framework:
